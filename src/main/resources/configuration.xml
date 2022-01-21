@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<!-- <typeAlias alias="모델명" type="모델경로"/> -->
+		<typeAlias type="com.jh.project.model.Pconsult" alias="Pconsult"/>
+		<typeAlias type="com.jh.project.model.Replys" alias="Replys"/>
+		<typeAlias type="com.jh.project.model.Member" alias="Member"/>
+		<typeAlias type="com.jh.project.model.Clinic" alias="Clinic"/>
+		<typeAlias type="com.jh.project.model.Oconsult" alias="Oconsult"/> 
+		<typeAlias type="com.jh.project.model.PunchHg" alias="PunchHg"/>
+		<typeAlias type="com.jh.project.model.Faq" alias="Faq"/>
+		<typeAlias type="com.jh.project.model.Notice" alias="Notice"/>
+		<typeAlias type="com.jh.project.model.Media" alias="Media"/>
+		<typeAlias type="com.jh.project.model.MemberManagement" alias="MemberManagement"/>
+		<typeAlias type="com.jh.project.model.EmpManagement" alias="EmpManagement"/>
+		<typeAlias type="com.jh.project.model.Reservation" alias="Reservation"/>
+		<typeAlias type="com.jh.project.model.Emp" alias="Emp"/>
+		<typeAlias type="com.jh.project.model.Review" alias="Review"/>
+	</typeAliases>
+
+</configuration>

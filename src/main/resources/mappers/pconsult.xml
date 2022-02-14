@@ -54,5 +54,10 @@
                where a.adminReplyChk = 1
              )
 	</select>
+	<select id="pconsultAllInfo" resultType="Pconsult" parameterType="Pconsult">
+		select * from 
+        	(select rownum rn, a.* from pconsult a) 
+        where rn BETWEEN #{start} and #{end}
+	</select>
 
 </mapper>

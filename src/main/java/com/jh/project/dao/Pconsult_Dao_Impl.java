@@ -26,7 +26,16 @@ public class Pconsult_Dao_Impl implements PconsultDao {
 	public int pconsultTotal() {
 		System.out.println("Pconsult_Dao_Impl pconsultTotal()");
 		int totalCnt = session.selectOne("jhPconsultCnt");
+		
 		return totalCnt;
+	}
+
+	@Override
+	public void pconsultInsert(Pconsult pconsult) {
+		System.out.println("Pconsult_Dao_Impl pconsultInsert()");
+		session.insert("Pconsult_InsertInfo", pconsult);
+		System.out.println("게시판 글 입력 성공!");
+		
 	}
 
 }

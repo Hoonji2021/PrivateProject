@@ -9,5 +9,7 @@ public interface PconsultDao {
 	List<Pconsult> pconsultList(Pconsult pconsult);
 
 	int pconsultTotal();
+
+	void pconsultInsert(Pconsult pconsult);
 	
 }

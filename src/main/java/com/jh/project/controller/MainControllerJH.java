@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -76,5 +77,18 @@ public class MainControllerJH {
 		return "pconsult";
 	}
 	
+	@GetMapping(value = "pconsultInsertForm")
+	public String pConsultInsert(Model model) {
+		System.out.println("MainControllerJH pConsultInsert start...");
+		return "pconsultInsertForm";
+	}
+	
+	@PostMapping(value = "pconsultInsertPro")
+	public String pConsultInsertPro(Model model, Pconsult pconsult) {
+		System.out.println("MainControllerJH pConsultInsertPro start...");
+		// db에 pconsult 내용 저장
+		pservice.pconsultInsert(pconsult);
+		return "pconsultInsertPro";
+	}
 	
 }

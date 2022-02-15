@@ -10,6 +10,8 @@ public interface Pconsult_Ser {
 
 	int pconsultTotal();
 
+	void pconsultInsert(Pconsult pconsult);
+
 	
 	
 }

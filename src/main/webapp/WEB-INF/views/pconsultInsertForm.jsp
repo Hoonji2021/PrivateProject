@@ -48,63 +48,43 @@ body{
 </head>
 <body>
 <%@include file="header.jsp" %>
-<table style="width: 68%; margin: 0 auto; margin-bottom: 1%">
-	<thead>
-	 <tr>
-		<th>번호</th><th>작성자</th><th>제목</th><th>날짜</th><th>조회수</th>
-	 </tr>
-	</thead>
-	<tbody>
-	 
-	 <c:forEach items="${pList}" var="plist">
-	 <fmt:formatDate value="${plist.pdate }" var="pdate" pattern="yy-MM-dd"/>
-	 <tr>
-	 	<td>${plist.pnum}</td>
-	 	<td>${plist.id}</td>
-	 	<td><a href="pconsultDetail?${plist.pnum }">${plist.ptitle}</a></td>
-	 	<td>${pdate}</td>
-	 	<td>${plist.pcount}</td>
-	 </tr>
-	 </c:forEach>
-	 
-	 
-	</tbody>
-	<!-- paging -->
-</table>
-	<div style=" margin: 0 auto; text-align: center;">
-		<c:forEach var="i" begin="${pg.startPage}" end="${pg.endPage }">
-			<a href="pconsult?currentPage=${i}">${i}</a>
-		</c:forEach>
-	</div>
-	<!-- 로그인 상태일 때 -->
-	<c:if test="${varSessionId != null }">
-	<div style="text-align: right; width: 68%; margin: 0 auto;">
-		<button id="writeclick" type="button" class="btn btn-info btn-sm">글쓰기</button>
-	</div>
-	</c:if>
-	<!--비회원 상태일 때  -->
-	<c:if test="${varSessionId == null }">
-	<div style="text-align: right; width: 68%; margin: 0 auto; ">
-		<button id="noclick" type="button" class="btn btn-info btn-sm">글쓰기</button>
-	</div>
-	</c:if>
+<div class="container" style="margin: 5% auto;">
+	<h2>온라인 상담 글 쓰기</h2>
+	<hr style="border: solid 2px lightgray;">
+	
+	<form action="pconsultInsertPro" method="post" style="margin-top: 50px;">
+	  <div class="row" style="margin: 3% auto;">
+		<div class="col" >
+			<h5>작성자 : </h5>
+			<input type="text" name="id" value="${varSessionId}" readonly="readonly" style="width: 85%" >
+			<input type="hidden" name="pnum" value="1"> 
+		</div>
+	  </div>
+	  <div class="row" style="margin: 3% auto;">
+		<div class="col" >
+			<h5>제목 : </h5><input type="text" name="ptitle" placeholder="제목을 입력하세요" style="width: 85%">
+		</div>
+	  </div>
+	  <div class="row" style="margin: 3% auto;">
+		<div class="col" >
+			<h5>내용 : </h5><textarea rows="5px" cols="100%" name="pcontent" placeholder="내용을 입력하세요"></textarea>
+		</div>
+	  </div>	
+	  <div class="row" style="margin: 3% auto;">
+		<div class="col" >
+			<h5>비밀번호 : </h5><input type="password" name="pw" placeholder="비밀번호를 입력하세요" maxlength="4">
+		</div>
+	  </div>
+	  <!-- 작성버튼 -->
+	  <div class="row" style="margin: 0% auto; text-align: right;">
+		<div class="col" >
+			<input type="submit" value="작성완료" class="btn btn-sm btn-primary">
+			<input type="button" value="작성취소" class="btn btn-sm btn-primary" onclick="history.go(-1)">
+		</div>
+	  </div>
+	  	
+	</form>
+</div>
 <%@include file="footer.jsp" %>
 </body>
-<script type="text/javascript">
-	$(function () {
-		$('#writeclick').click(function () {
-			location.href = 'pconsultInsertForm';
-		});
-		
-		$('#noclick').click(function () {
-			var answer;
-			answer = confirm("회원만 가능한 기능입니다. 로그인 하시겠습니까?");
-			if(answer == true){
-				location.href = 'main';
-			}
-			
-		});
-		
-	});
-</script>
 </html>

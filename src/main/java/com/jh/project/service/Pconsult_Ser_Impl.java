@@ -12,7 +12,7 @@ import com.jh.project.model.Pconsult;
 public class Pconsult_Ser_Impl implements Pconsult_Ser {
 	
 	@Autowired
-	PconsultDao pdao;
+	private PconsultDao pdao;
 	
 	@Override
 	public List<Pconsult> pconsultAll(Pconsult pconsult) {
@@ -27,6 +27,13 @@ public class Pconsult_Ser_Impl implements Pconsult_Ser {
 		System.out.println("Pconsult_Ser_Impl pconsultTotal()");
 		int pconsultCnt = pdao.pconsultTotal();
 		return pconsultCnt;
+	}
+
+	@Override
+	public void pconsultInsert(Pconsult pconsult) {
+		System.out.println("Pconsult_Ser_Impl pconsultInsert() start...");
+		pdao.pconsultInsert(pconsult);
+		
 	}
 
 }

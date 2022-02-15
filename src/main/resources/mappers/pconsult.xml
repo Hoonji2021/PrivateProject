@@ -59,5 +59,9 @@
         	(select rownum rn, a.* from pconsult a) 
         where rn BETWEEN #{start} and #{end}
 	</select>
+	<insert id="Pconsult_InsertInfo">
+	insert into pconsult
+	values(pconsult_seq.nextval,#{id},#{ptitle},sysdate,0,#{pcontent},#{pw})
+	</insert>
 
 </mapper>

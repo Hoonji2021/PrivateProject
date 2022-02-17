@@ -63,5 +63,8 @@
 	insert into pconsult
 	values(pconsult_seq.nextval,#{id},#{ptitle},sysdate,0,#{pcontent},#{pw})
 	</insert>
+	<select id="PconsultDetail" parameterType="int" resultType="Pconsult">
+	select * from pconsult where pnum=#{pnum}
+	</select>
 
 </mapper>

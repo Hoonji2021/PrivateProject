@@ -36,4 +36,11 @@ public class Pconsult_Ser_Impl implements Pconsult_Ser {
 		
 	}
 
+	@Override
+	public Pconsult DetailInfo(int pnum) {
+		System.out.println("Pconsult_Ser_Impl DetailInfo() start...");
+		Pconsult pconsult = pdao.p_DetailInfo(pnum);
+		return pconsult;
+	}
+
 }

@@ -38,4 +38,11 @@ public class Pconsult_Dao_Impl implements PconsultDao {
 		
 	}
 
+	@Override
+	public Pconsult p_DetailInfo(int pnum) {
+		System.out.println("Pconsult_Dao_Impl p_DetailInfo start...");
+		Pconsult pconsult = session.selectOne("PconsultDetail", pnum);
+		return pconsult;
+	}
+
 }

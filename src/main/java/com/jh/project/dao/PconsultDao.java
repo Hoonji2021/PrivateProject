@@ -11,5 +11,7 @@ public interface PconsultDao {
 	int pconsultTotal();
 
 	void pconsultInsert(Pconsult pconsult);
+
+	Pconsult p_DetailInfo(int pnum);
 	
 }

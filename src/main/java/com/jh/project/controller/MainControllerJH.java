@@ -88,7 +88,28 @@ public class MainControllerJH {
 		System.out.println("MainControllerJH pConsultInsertPro start...");
 		// db에 pconsult 내용 저장
 		pservice.pconsultInsert(pconsult);
-		return "pconsultInsertPro";
+		return "redirect:pConsultDetail?pnum="+pconsult.getPnum();
+	}
+	
+	@GetMapping(value = "pconsultDetail")
+	public String pconsult_Detail(Model model, int pnum) {
+		System.out.println("MainControllerJH pconsult_Detail() Start...");
+		System.out.println("pconsult_Detail pnum->"+pnum);
+		Pconsult pconsult = pservice.DetailInfo(pnum);
+		
+		System.out.println("pconsult.content->"+pconsult.getPcontent());
+		
+		model.addAttribute("pdetail", pconsult);
+		return "pconsultDetail";
+	}
+	
+	@PostMapping(value = "pconsultUpdateForm")
+	public String pconsult_Update(Model model, Pconsult pconsult) {
+		System.out.println("MainControllerJH pconsult_Update start...");
+		int pnum = pconsult.getPnum();
+		System.out.println("MainControllerJH pconsult_Update pnum->"+pnum);
+		
+		return "pconsultUpdateForm";
 	}
 	
 }

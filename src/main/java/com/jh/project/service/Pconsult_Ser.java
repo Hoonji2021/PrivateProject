@@ -12,6 +12,8 @@ public interface Pconsult_Ser {
 
 	void pconsultInsert(Pconsult pconsult);
 
+	Pconsult DetailInfo(int pnum);
+
 	
 	
 }

@@ -48,63 +48,41 @@ body{
 </head>
 <body>
 <%@include file="header.jsp" %>
-<table style="width: 68%; margin: 0 auto; margin-bottom: 1%">
-	<thead>
-	 <tr>
-		<th>번호</th><th>작성자</th><th>제목</th><th>날짜</th><th>조회수</th>
-	 </tr>
-	</thead>
-	<tbody>
-	 
-	 <c:forEach items="${pList}" var="plist">
-	 <fmt:formatDate value="${plist.pdate }" var="pdate" pattern="yy-MM-dd"/>
-	 <tr>
-	 	<td>${plist.pnum}</td>
-	 	<td>${plist.id}</td>
-	 	<td><a href="pconsultDetail?pnum=${plist.pnum }">${plist.ptitle}</a></td>
-	 	<td>${pdate}</td>
-	 	<td>${plist.pcount}</td>
-	 </tr>
-	 </c:forEach>
-	 
-	 
-	</tbody>
-	<!-- paging -->
-</table>
-	<div style=" margin: 0 auto; text-align: center;">
-		<c:forEach var="i" begin="${pg.startPage}" end="${pg.endPage }">
-			<a href="pconsult?currentPage=${i}">${i}</a>
-		</c:forEach>
+
+	<div class="container" style="margin: 5% auto;">
+	<h2>게시판 상세페이지</h2>
+	<hr style="border: solid 2px lightgray;">
+		<div class="row">
+			<div class="col">
+				작성자 : ${pdetail.id }
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				제목 : ${pdetail.ptitle }
+			</div>
+		</div>
+		<div class="row">
+			<div class="col">
+				내용 : ${pdetail.pcontent }
+			</div>
+		</div>
+		<!--수정하기, 목록으로 버튼  -->
+		<div class="row" style="margin: 0% auto; text-align: right;">
+			<div class="col" >
+				<form action="pconsultUpdateForm" method="post">
+				<input type="hidden" name="pnum" value="${pdetail.pnum }">
+				<input type="hidden" name="id" value="${pdetail.id }">
+				<input type="hidden" name="ptitle" value="${pdetail.ptitle }">
+				<input type="hidden" name="pcontent" value="${pdetail.pcontent }">
+				<input type="hidden" name="pw" value="${pdetail.pw }">
+				<input type="submit" value="수정하기" class="btn btn-sm btn-primary">
+				<input type="button" value="목록으로" class="btn btn-sm btn-primary" onclick="history.go(-1)">
+				</form>
+			</div>
+	    </div>
+		
 	</div>
-	<!-- 로그인 상태일 때 -->
-	<c:if test="${varSessionId != null }">
-	<div style="text-align: right; width: 68%; margin: 0 auto;">
-		<button id="writeclick" type="button" class="btn btn-info btn-sm">글쓰기</button>
-	</div>
-	</c:if>
-	<!--비회원 상태일 때  -->
-	<c:if test="${varSessionId == null }">
-	<div style="text-align: right; width: 68%; margin: 0 auto; ">
-		<button id="noclick" type="button" class="btn btn-info btn-sm">글쓰기</button>
-	</div>
-	</c:if>
 <%@include file="footer.jsp" %>
 </body>
-<script type="text/javascript">
-	$(function () {
-		$('#writeclick').click(function () {
-			location.href = 'pconsultInsertForm';
-		});
-		
-		$('#noclick').click(function () {
-			var answer;
-			answer = confirm("회원만 가능한 기능입니다. 로그인 하시겠습니까?");
-			if(answer == true){
-				location.href = 'main';
-			}
-			
-		});
-		
-	});
-</script>
 </html>

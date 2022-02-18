@@ -43,4 +43,11 @@ public class Pconsult_Ser_Impl implements Pconsult_Ser {
 		return pconsult;
 	}
 
+	@Override
+	public void pconsultUpdatePro(Pconsult pconsult) {
+		System.out.println("Pconsult_Ser_Impl pconsultUpdatePro() start...");
+		pdao.pconsultUpdatePro(pconsult);
+		
+	}
+
 }

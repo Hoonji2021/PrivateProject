@@ -76,7 +76,9 @@ body{
 				<input type="hidden" name="ptitle" value="${pdetail.ptitle }">
 				<input type="hidden" name="pcontent" value="${pdetail.pcontent }">
 				<input type="hidden" name="pw" value="${pdetail.pw }">
+				<c:if test="${varSessionId == pdetail.id }">
 				<input type="submit" value="수정하기" class="btn btn-sm btn-primary">
+				</c:if>
 				<input type="button" value="목록으로" class="btn btn-sm btn-primary" onclick="history.go(-1)">
 				</form>
 			</div>

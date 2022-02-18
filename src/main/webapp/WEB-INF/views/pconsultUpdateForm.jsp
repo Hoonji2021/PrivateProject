@@ -49,7 +49,28 @@ body{
 <body>
 <%@include file="header.jsp" %>
 <h2>게시판 수정하기</h2>
-
+	<div class="container" style="margin: 5% auto;">
+		<form action="pconsultUpdatePro" method="post">
+		<div class="row" style="margin: 3% auto;">
+			작성자 : <input type="text" name="id" readonly="readonly" value="${pconsult.id }">
+		</div>
+		<div class="row" style="margin: 3% auto;">
+			제목 : <input type="text" name="ptitle" value="${pconsult.ptitle }">
+		</div>
+		<div class="row" style="margin: 3% auto;">
+			내용 : <textarea rows="5px" cols="100%" name="pcontent">${pconsult.pcontent }</textarea>
+		</div>
+		<div class="row" style="margin: 3% auto;">
+			비밀번호 : <input type="password" name="pw" value="${pconsult.pw }" maxlength="4">
+			<input type="hidden" name="pnum" value="${pconsult.pnum }">
+		</div>
+		<div class="row" style="margin: 0% auto; text-align: right;">
+			<input type="submit" value="수정완료" class="btn btn-sm btn-primary">
+			<input type="button" value="작성취소" class="btn btn-sm btn-primary" onclick="history.go(-1)">
+		</div>
+		</form>
+	</div>
+<%@include file="footer.jsp" %>
 
 </body>
 </html>

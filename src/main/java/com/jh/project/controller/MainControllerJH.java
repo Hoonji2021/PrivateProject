@@ -68,10 +68,6 @@ public class MainControllerJH {
 		//pconsult의 모든 데이터 가지고 오기
 		List<Pconsult> pconsult_List = pservice.pconsultAll(pconsult);
 		System.out.println("MainControllerJH pconsult_List id->"+pconsult_List.get(0).getId());
-		
-		
-	
-		
 		model.addAttribute("pList", pconsult_List);
 		model.addAttribute("pg", pg);
 		return "pconsult";
@@ -88,10 +84,11 @@ public class MainControllerJH {
 		System.out.println("MainControllerJH pConsultInsertPro start...");
 		// db에 pconsult 내용 저장
 		pservice.pconsultInsert(pconsult);
-		return "redirect:pConsultDetail?pnum="+pconsult.getPnum();
+		System.out.println("pConsultInsertPro pconsult.getPnum()->"+pconsult.getPnum());
+		return "redirect:pconsultDetail?pnum="+pconsult.getPnum();
 	}
 	
-	@GetMapping(value = "pconsultDetail")
+	@RequestMapping(value = "pconsultDetail", method={ RequestMethod.POST, RequestMethod.GET })
 	public String pconsult_Detail(Model model, int pnum) {
 		System.out.println("MainControllerJH pconsult_Detail() Start...");
 		System.out.println("pconsult_Detail pnum->"+pnum);
@@ -109,7 +106,19 @@ public class MainControllerJH {
 		int pnum = pconsult.getPnum();
 		System.out.println("MainControllerJH pconsult_Update pnum->"+pnum);
 		
+		model.addAttribute("pconsult", pconsult);
+		
 		return "pconsultUpdateForm";
+	}
+	
+	@PostMapping(value = "pconsultUpdatePro")
+	public String pconsult_UpdatePro(Model model, Pconsult pconsult) {
+		System.out.println("MainControllerJH pconsult_UpdatePro() start...");
+		int pnum = pconsult.getPnum();
+		pservice.pconsultUpdatePro(pconsult);
+		model.addAttribute("pnum", pnum);
+		//forward는 post방식, redirect는 get방식
+		return "forward:pconsultDetail"; // model값을 가지고 간다.
 	}
 	
 }

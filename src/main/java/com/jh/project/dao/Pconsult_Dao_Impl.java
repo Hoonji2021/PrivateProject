@@ -45,4 +45,10 @@ public class Pconsult_Dao_Impl implements PconsultDao {
 		return pconsult;
 	}
 
+	@Override
+	public void pconsultUpdatePro(Pconsult pconsult) {
+		System.out.println("Pconsult_Dao_Impl pconsultUpdatePro() start...");
+		session.update("pconsultUpdatePro", pconsult);
+	}
+
 }

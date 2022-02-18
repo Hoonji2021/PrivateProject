@@ -59,12 +59,16 @@
         	(select rownum rn, a.* from pconsult a) 
         where rn BETWEEN #{start} and #{end}
 	</select>
-	<insert id="Pconsult_InsertInfo">
+	<insert id="Pconsult_InsertInfo" useGeneratedKeys="false">
 	insert into pconsult
 	values(pconsult_seq.nextval,#{id},#{ptitle},sysdate,0,#{pcontent},#{pw})
+	<selectKey resultType="int" order="AFTER" keyProperty="pnum">select pconsult_seq.currval from dual</selectKey>
 	</insert>
 	<select id="PconsultDetail" parameterType="int" resultType="Pconsult">
 	select * from pconsult where pnum=#{pnum}
 	</select>
+	<update id="pconsultUpdatePro" parameterType="Pconsult">
+	update pconsult set ptitle=#{ptitle}, pcontent=#{pcontent}, pw=#{pw} where pnum=#{pnum} 
+	</update>
 
 </mapper>

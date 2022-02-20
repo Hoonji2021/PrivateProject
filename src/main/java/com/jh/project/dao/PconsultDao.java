@@ -15,5 +15,7 @@ public interface PconsultDao {
 	Pconsult p_DetailInfo(int pnum);
 
 	void pconsultUpdatePro(Pconsult pconsult);
+
+	int pconsultDelete(int pnum);
 	
 }

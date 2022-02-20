@@ -71,15 +71,16 @@ body{
 		<div class="row" style="margin: 0% auto; text-align: right;">
 			<div class="col" >
 				<form action="pconsultUpdateForm" method="post">
-				<input type="hidden" name="pnum" value="${pdetail.pnum }">
-				<input type="hidden" name="id" value="${pdetail.id }">
-				<input type="hidden" name="ptitle" value="${pdetail.ptitle }">
-				<input type="hidden" name="pcontent" value="${pdetail.pcontent }">
-				<input type="hidden" name="pw" value="${pdetail.pw }">
+					<input type="hidden" name="pnum" value="${pdetail.pnum }">
+					<input type="hidden" name="id" value="${pdetail.id }">
+					<input type="hidden" name="ptitle" value="${pdetail.ptitle }">
+					<input type="hidden" name="pcontent" value="${pdetail.pcontent }">
+					<input type="hidden" name="pw" value="${pdetail.pw }">
 				<c:if test="${varSessionId == pdetail.id }">
-				<input type="submit" value="수정하기" class="btn btn-sm btn-primary">
+					<input type="submit" value="수정하기" class="btn btn-sm btn-primary">
+					<input type="button" value="삭제하기" class="btn btn-sm btn-primary" onclick="location.href='pconsultDeletePro?pnum=${pdetail.pnum}'">
 				</c:if>
-				<input type="button" value="목록으로" class="btn btn-sm btn-primary" onclick="history.go(-1)">
+					<input type="button" value="목록으로" class="btn btn-sm btn-primary" onclick="history.go(-1)">
 				</form>
 			</div>
 	    </div>

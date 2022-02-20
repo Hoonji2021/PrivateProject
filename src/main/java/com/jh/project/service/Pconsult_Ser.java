@@ -16,6 +16,8 @@ public interface Pconsult_Ser {
 
 	void pconsultUpdatePro(Pconsult pconsult);
 
+	int pconsultDelete(int pnum);
+
 	
 	
 }

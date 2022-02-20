@@ -50,4 +50,11 @@ public class Pconsult_Ser_Impl implements Pconsult_Ser {
 		
 	}
 
+	@Override
+	public int pconsultDelete(int pnum) {
+		System.out.println("Pconsult_Ser_Impl pconsultDelete() start...");
+		int result = pdao.pconsultDelete(pnum);
+		return result;
+	}
+
 }

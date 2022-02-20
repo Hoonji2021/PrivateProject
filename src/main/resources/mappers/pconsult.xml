@@ -70,5 +70,8 @@
 	<update id="pconsultUpdatePro" parameterType="Pconsult">
 	update pconsult set ptitle=#{ptitle}, pcontent=#{pcontent}, pw=#{pw} where pnum=#{pnum} 
 	</update>
+	<delete id="pconsultDeletePro" parameterType="int">
+	delete from pconsult where pnum=#{pnum}
+	</delete>
 
 </mapper>

@@ -121,4 +121,14 @@ public class MainControllerJH {
 		return "forward:pconsultDetail"; // model값을 가지고 간다.
 	}
 	
+	@GetMapping(value = "pconsultDeletePro")
+	public String pconsultDel(Model model, int pnum) {
+		System.out.println("MainControllerJH pconsultDel() start...");
+		System.out.println("pconsultDel() pnum->"+pnum);
+		
+		int result = pservice.pconsultDelete(pnum);
+		model.addAttribute("result", result);
+		return "pconsultDeletePro";
+	}
+	
 }

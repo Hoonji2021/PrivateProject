@@ -51,4 +51,11 @@ public class Pconsult_Dao_Impl implements PconsultDao {
 		session.update("pconsultUpdatePro", pconsult);
 	}
 
+	@Override
+	public int pconsultDelete(int pnum) {
+		System.out.println("Pconsult_Dao_Impl pconsultDelete() start...");
+		int result = session.delete("pconsultDeletePro", pnum);
+		return result;
+	}
+
 }
